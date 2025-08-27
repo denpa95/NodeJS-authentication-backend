@@ -1,0 +1,7 @@
+File upload to Cloudinary only by registered admin.
+
+1. (model/image.js) -> Create ImageSchema that contains image URL, public ID and uploader ID.
+2. (config/cloudinary.js) -> Create Cloudinary config file that connects to Cloudinary API using provided API keys
+3. (utils/cloudinaryHelper.js) -> uploads file to Cloudinary and returns an object that contains image URL and public ID.
+4. (controller/imageController.js) -> uses the util function uploadToCloudinary and uses the returned object as reference to create and save image record into MongoDB database.
+5. (route/imageRoutes.js) -> contains "api/image/upload" POST route that checks if user is an admin and lets the admin user to upload an image. User must first login and a bearer token will be created and passed into authMiddleware which will use the JWT secret key to verify the token and create an userInfo object containing user info and pass it into the next middleware. The next middleware(adminAuthMiddleware) takes the userInfo and verifies if the user is an admin. Then, the multer middleware allows user to upload an image into Cloudinary.p;

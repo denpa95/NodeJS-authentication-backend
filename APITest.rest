@@ -1,0 +1,34 @@
+@authUrl = http://localhost:3000/api/auth
+@imageUrl = http://localhost:3000/api/image
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGE1NzA5ZDRjNzQ1OTc4ZjRlZmE3YjgiLCJ1c2VybmFtZSI6InNoaXZhOTUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTU2NzI5MjksImV4cCI6MTc1NTY3MzgyOX0.vSyzP8DPr7NKdHOr-PcomFcRlehltRMjuxfpJP1ReJ0
+
+### Register user
+POST {{authUrl}}/register
+Content-Type: application/json
+
+{
+  "username": "shiva95",
+  "email": "shiva95@hotmail.com",
+  "password": "shiva95",
+  "role": "admin"
+}
+
+### Login user
+POST {{authUrl}}/login
+Content-Type: application/json
+
+{
+  "username": "denpa24",
+  "password": "denpa95"
+}
+
+### Change password
+POST {{authUrl}}/auth/change-password
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "oldPassword": "denpa24",
+  "newPassword": "denpa95"
+}
+
